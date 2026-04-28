@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NAIGC Nationals 2026 — Photo Picker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div id="topbar">
+  <div id="topbar-row1">
+    <div id="identity-wrap">
+      <span>I am:</span>
+      <select id="identity-select">
+        <option value="">— pick your name —</option>
+        <option value="nate">Nate</option>
+        <option value="ilana">Ilana</option>
+        <option value="jules">Jules</option>
+        <option value="dot">Dot</option>
+        <option value="olivia">Olivia</option>
+      </select>
+    </div>
+    <div id="chips">
+      <!-- populated by JS -->
+    </div>
+  </div>
+
+  <div id="filterbar">
+    <label>Show:</label>
+    <button class="filter-btn active" data-tier="all">All photos</button>
+    <button class="filter-btn" data-tier="love">★★ Love</button>
+    <button class="filter-btn" data-tier="like">★ Like</button>
+    <button class="filter-btn" data-tier="either">★ or ★★</button>
+    <button class="filter-btn" data-tier="unrated">Unrated</button>
+    <button id="filter-clear" title="Clear person filter">Clear person filter</button>
+    <span id="photo-count"></span>
+  </div>
+</div>
+
+<div id="loading">Loading photos…</div>
+<div id="grid" style="display:none"></div>
+<div id="empty-msg">No photos match the current filter.</div>
+
+<!-- Modal -->
+<div id="modal-overlay" role="dialog" aria-modal="true">
+  <button id="modal-close" aria-label="Close">✕</button>
+  <div id="modal-img-wrap">
+    <button class="modal-nav" id="modal-prev" aria-label="Previous">‹</button>
+    <img id="modal-img" src="" alt="" />
+    <button class="modal-nav" id="modal-next" aria-label="Next">›</button>
+  </div>
+  <div id="modal-footer">
+    <button class="modal-rate-btn like-btn" id="modal-like-btn">★ Like</button>
+    <button class="modal-rate-btn love-btn" id="modal-love-btn">★★ Love</button>
+    <span id="modal-filename"></span>
+  </div>
+  <div id="modal-badges"></div>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

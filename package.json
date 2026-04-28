@@ -1,0 +1,11 @@
+{
+  "name": "naigc-nationals-2026-photos",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-thumbs.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.33.5"
+  }
+}
