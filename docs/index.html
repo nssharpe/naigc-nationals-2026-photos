@@ -24,6 +24,7 @@
     <div id="chips">
       <!-- populated by JS -->
     </div>
+    <button id="sel-mode-btn" title="Switch to final selection mode">📋 Final Selection</button>
   </div>
 
   <div id="filterbar">
@@ -35,6 +36,22 @@
     <button class="filter-btn" data-tier="unrated">Unrated</button>
     <button id="filter-clear" title="Clear person filter">Clear person filter</button>
     <span id="photo-count"></span>
+  </div>
+
+  <div id="selbar" style="display:none">
+    <div id="selbar-main">
+      <span id="sel-counter">Selected: <strong id="sel-count">0</strong> / 40</span>
+      <span id="tie-warn" style="display:none"></span>
+      <div id="selbar-actions">
+        <button class="filter-btn" data-sel-filter="all">All</button>
+        <button class="filter-btn" data-sel-filter="love3">3+ Loves</button>
+        <button class="filter-btn" data-sel-filter="love5">All 5 Love</button>
+        <button class="filter-btn" data-sel-filter="selected">Selected only</button>
+        <button class="filter-btn" data-sel-filter="unselected">Unselected</button>
+        <button id="auto-pick-btn" title="Reset to auto-picked top 40 by score">↺ Reset to top 40</button>
+        <button id="copy-btn">📋 Copy filenames</button>
+      </div>
+    </div>
   </div>
 </div>
 

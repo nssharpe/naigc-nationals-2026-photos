@@ -348,6 +348,146 @@ body {
   color: var(--text-dim);
 }
 
+/* ── SELECTION MODE ──────────────────────────────────────── */
+#sel-mode-btn {
+  height: var(--chip-height);
+  padding: 0 14px;
+  border-radius: 18px;
+  border: 2px solid var(--border);
+  background: var(--surface2);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  margin-left: auto;
+  transition: border-color .15s, background .15s, color .15s;
+  white-space: nowrap;
+}
+#sel-mode-btn:hover { border-color: var(--accent); }
+#sel-mode-btn.active {
+  border-color: #4caf50;
+  background: #1a2e1a;
+  color: #4caf50;
+}
+
+#selbar {
+  padding: 8px 0 2px;
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+#selbar-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+#sel-counter {
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+#sel-count { font-size: 18px; }
+#sel-count.good { color: #4caf50; }
+#sel-count.over  { color: var(--red-warning); }
+#sel-count.under { color: var(--text-dim); }
+
+#tie-warn {
+  font-size: 12px;
+  color: #ff9800;
+  padding: 3px 10px;
+  border: 1px solid #ff9800;
+  border-radius: 10px;
+}
+
+#selbar-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-left: auto;
+}
+
+#auto-pick-btn {
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 12px;
+  transition: border-color .15s, color .15s;
+}
+#auto-pick-btn:hover { border-color: var(--accent); color: var(--text); }
+
+#copy-btn {
+  height: 28px;
+  padding: 0 14px;
+  border-radius: 14px;
+  border: 1px solid #4caf50;
+  background: #1a2e1a;
+  color: #4caf50;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background .15s;
+}
+#copy-btn:hover { background: #254025; }
+#copy-btn.copied { background: #4caf50; color: #000; }
+
+/* card states in selection mode */
+.thumb-wrap.sel-selected {
+  outline: 3px solid #4caf50;
+  outline-offset: -3px;
+}
+.thumb-wrap.sel-tie {
+  outline: 3px solid #ff9800;
+  outline-offset: -3px;
+}
+.thumb-wrap.sel-selected.sel-tie {
+  outline-color: #4caf50; /* selected takes priority */
+}
+
+.sel-check {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  pointer-events: none;
+  z-index: 5;
+}
+.sel-mode .sel-check { display: flex; }
+.thumb-wrap.sel-selected .sel-check { background: #4caf50; color: #fff; }
+.thumb-wrap:not(.sel-selected) .sel-check { background: rgba(0,0,0,.5); color: rgba(255,255,255,.5); border: 2px solid rgba(255,255,255,.3); }
+
+.score-badge {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  background: rgba(0,0,0,.75);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 10px;
+  display: none;
+  pointer-events: none;
+  z-index: 5;
+  white-space: nowrap;
+}
+.sel-mode .score-badge { display: block; }
+
+/* in selection mode, suppress rating overlay and cursor becomes pointer for toggle */
+.sel-mode .thumb-wrap { cursor: pointer; }
+.sel-mode .thumb-overlay { display: none !important; }
+
 /* ── RESPONSIVE ──────────────────────────────────────────── */
 @media (max-width: 600px) {
   #grid { grid-template-columns: repeat(2, 1fr); gap: 3px; padding: 4px; }
