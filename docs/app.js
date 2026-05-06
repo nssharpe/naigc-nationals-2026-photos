@@ -375,14 +375,13 @@ copyBtn.addEventListener('click', () => {
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
     .map(id => `${FILENAME_PREFIX}${id}.jpg`)
     .join('\n');
-  navigator.clipboard.writeText(filenames).then(() => {
-    copyBtn.textContent = '✓ Copied!';
-    copyBtn.classList.add('copied');
-    setTimeout(() => {
-      copyBtn.textContent = '📋 Copy filenames';
-      copyBtn.classList.remove('copied');
-    }, 2500);
-  });
+  const blob = new Blob([filenames], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'naigc-nationals-2026-final-40.txt';
+  a.click();
+  URL.revokeObjectURL(url);
 });
 
 // ── Grid ──────────────────────────────────────────────────────────────────────
